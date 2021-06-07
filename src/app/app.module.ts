@@ -31,6 +31,7 @@ import { PublicModule } from "./PublicModule/public.module";
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
+    PublicModule,
   ],
   declarations: [AppComponent],
   providers: [

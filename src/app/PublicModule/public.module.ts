@@ -13,8 +13,8 @@ import { ShareModule } from "../ShareModule/share.module";
 
 const routes: Routes = [
   {
-    path: "",
-    pathMatch: "prefix",
+    path: "public",
+    pathMatch: "full",
     redirectTo: "account",
   },
   {
@@ -42,6 +42,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     IonicModule,
+    ShareModule,
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
