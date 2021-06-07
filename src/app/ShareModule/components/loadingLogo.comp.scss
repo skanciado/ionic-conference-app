@@ -1,0 +1,47 @@
+.carregant-contenidor {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 1s ease;
+}
+
+.informacio {
+  padding-bottom: 5px;
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+.carregant-flex {
+  height: 200px;
+}
+.carregant {
+  overflow: hidden;
+  transition: max-height 0.5s ease-in;
+  /*animation: myload 3s;
+  animation-iteration-count: 2;*/
+}
+@keyframes myload {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 200px;
+  }
+}
+.logo {
+  background-image: url("/assets/logo-appinya.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+}
+p {
+  text-align: center;
+  text-align: center;
+  line-height: 60px;
+  font-size: 20px;
+  vertical-align: central;
+}

@@ -1,42 +1,35 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CheckTutorial } from './providers/check-tutorial.service';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/tutorial',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "/",
+    pathMatch: "full",
   },
   {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
+    path: "public",
+    loadChildren: () =>
+      import(`./publicModule/public.module`).then(
+        (module) => module.PublicModule
+      ),
   },
   {
-    path: 'support',
-    loadChildren: () => import('./pages/support/support.module').then(m => m.SupportModule)
+    path: "schedule",
+    loadChildren: () =>
+      import("./pages/schedule/schedule.module").then((m) => m.ScheduleModule),
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    path: "",
+    loadChildren: () =>
+      import("./pages/speaker-list/speaker-list.module").then(
+        (m) => m.SpeakerListModule
+      ),
   },
-  {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignUpModule)
-  },
-  {
-    path: 'app',
-    loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
-  },
-  {
-    path: 'tutorial',
-    loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
-    canLoad: [CheckTutorial]
-  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

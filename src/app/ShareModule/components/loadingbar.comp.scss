@@ -1,0 +1,28 @@
+.carregant-contenidor {
+  width: 100%;
+  vertical-align: central;
+  text-align: center;
+  align-items: center;
+}
+
+.informacio {
+  padding-bottom: 5px;
+  color: var(--ion-color-primary);
+  font-size: 20px;
+}
+
+.carregant {
+  background: var(--ion-color-primary);
+  border-radius: 100px;
+  height: 60px;
+  margin: auto;
+
+  p {
+    text-align: center;
+    color: white !important;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    vertical-align: central;
+  }
+}
