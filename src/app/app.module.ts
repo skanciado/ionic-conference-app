@@ -17,6 +17,7 @@ import { ErrorIntercept } from "./interceptors/error.interceptor";
 import { HttpIntercept } from "./interceptors/http.interceptor";
 import { Drivers } from "@ionic/storage";
 import { PublicModule } from "./PublicModule/public.module";
+import { ShareModule } from "./ShareModule/share.module";
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,6 +33,7 @@ import { PublicModule } from "./PublicModule/public.module";
       enabled: environment.production,
     }),
     PublicModule,
+    ShareModule,
   ],
   declarations: [AppComponent],
   providers: [

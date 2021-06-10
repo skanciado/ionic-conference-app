@@ -7,7 +7,10 @@ import { Subject } from "rxjs";
 export class EventService {
   private withoutConnection: Subject<Boolean> = new Subject();
   private errorSubject: Subject<string> = new Subject();
-
+  private darkMode: Subject<Boolean> = new Subject();
+  sendDarkMode(darkmode: boolean) {
+    this.darkMode.next(darkmode);
+  }
   sendEventWithoutConnection() {
     this.withoutConnection.next(false);
   }
@@ -22,7 +25,18 @@ export class EventService {
     error?: (error: any) => void,
     complete?: () => void
   ) {
-    this.errorSubject.subscribe({
+    return this.errorSubject.subscribe({
+      next: next,
+      error: error,
+      complete: complete,
+    });
+  }
+  getObservableDarckMode(
+    next?: (value: boolean) => void,
+    error?: (error: any) => void,
+    complete?: () => void
+  ) {
+    this.darkMode.subscribe({
       next: next,
       error: error,
       complete: complete,

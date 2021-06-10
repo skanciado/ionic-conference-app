@@ -8,6 +8,13 @@ export class StoreData {
   constructor(protected storage: Storage) {
     this.storage.create();
   }
+
+  public setDarkMode(darkmode: boolean) {
+    return this.storage.set("DARK_MODE", darkmode);
+  }
+  public getDarkMode(): Promise<Boolean> {
+    return this.storage.get("DARK_MODE");
+  }
   /**
    * Obtenir el usuario de session
    * @returns
@@ -15,6 +22,7 @@ export class StoreData {
   public getUser(): Promise<IUser> {
     return this.storage.get("USER");
   }
+
   /**
    * Guardar el usuario en session
    * @param user

@@ -2,11 +2,6 @@
   <ion-menu side="start" contentId="main-content">
     <ion-content>
       <ion-list lines="none">
-        <ion-item>
-          <ion-icon slot="start" name="moon-outline"></ion-icon>
-          <ion-label> Dark Mode </ion-label>
-          <ion-toggle [(ngModel)]="dark"></ion-toggle>
-        </ion-item>
         <ion-list-header> Conference </ion-list-header>
         <ion-menu-toggle
           autoHide="false"
@@ -26,7 +21,7 @@
         </ion-menu-toggle>
       </ion-list>
 
-      <ion-list *ngIf="loggedIn" lines="none">
+      <ion-list lines="none">
         <ion-list-header> Account </ion-list-header>
 
         <ion-menu-toggle autoHide="false">
@@ -54,14 +49,14 @@
         </ion-menu-toggle>
 
         <ion-menu-toggle autoHide="false">
-          <ion-item button (click)="logout()" detail="false">
+          <ion-item button detail="false">
             <ion-icon slot="start" name="log-out"></ion-icon>
             <ion-label> Logout </ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
 
-      <ion-list *ngIf="!loggedIn" lines="none">
+      <ion-list lines="none">
         <ion-list-header> Account </ion-list-header>
 
         <ion-menu-toggle autoHide="false">
@@ -118,6 +113,7 @@
       </ion-list>
     </ion-content>
   </ion-menu>
+  <navbar-comp sticky [user]="user" [darkMode]="dark"></navbar-comp>
   <ion-router-outlet id="main-content"></ion-router-outlet>
   <ion-tabs>
     <ion-tab-bar slot="bottom">

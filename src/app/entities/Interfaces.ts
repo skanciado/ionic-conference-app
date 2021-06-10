@@ -1,10 +1,12 @@
 export interface IUser {
   UserName: string;
   Email: string;
+  LastName: string;
+  Name: string;
   DefaultLanguatge: string;
-  Roles: string[];
-  Token: string;
-  RefreshToken: string;
+  Roles?: string[];
+  Token?: string;
+  RefreshToken?: string;
 }
 export interface ILogin {
   User: string;

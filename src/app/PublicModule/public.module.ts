@@ -6,6 +6,8 @@ import { IonicModule } from "@ionic/angular";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginPage } from "./login/login";
 import { AccountPage } from "./account/account";
+
+import { HomePage } from "./home/home";
 import { SignupPage } from "./signup/signup";
 import { SupportPage } from "./support/support";
 import { HttpClientModule } from "@angular/common/http";
@@ -15,7 +17,11 @@ const routes: Routes = [
   {
     path: "public",
     pathMatch: "full",
-    redirectTo: "account",
+    redirectTo: "",
+  },
+  {
+    path: "",
+    component: HomePage,
   },
   {
     path: "login",
@@ -46,7 +52,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  declarations: [AccountPage, SupportPage, LoginPage, SignupPage],
+  declarations: [AccountPage, HomePage, SupportPage, LoginPage, SignupPage],
   providers: [],
 })
 export class PublicModule {}

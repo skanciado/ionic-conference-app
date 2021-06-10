@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/",
+    redirectTo: "/public",
     pathMatch: "full",
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
       import("./pages/schedule/schedule.module").then((m) => m.ScheduleModule),
   },
   {
-    path: "",
+    path: "speaker",
     loadChildren: () =>
       import("./pages/speaker-list/speaker-list.module").then(
         (m) => m.SpeakerListModule

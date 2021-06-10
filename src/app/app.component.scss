@@ -4,6 +4,13 @@ ion-menu ion-content {
 
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
+navbar-comp {
+  z-index: 900;
+  position: sticky;
+}
+ion-router-outlet {
+  top: 112px;
+}
 ion-tab-bar {
   display: none;
 }

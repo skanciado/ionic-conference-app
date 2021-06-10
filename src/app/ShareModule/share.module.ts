@@ -9,6 +9,8 @@ import { LoadingBarComponent } from "./components/loadingbar.comp";
 import { LoadingLogoComponent } from "./components/loadingLogo.comp";
 import { NotFoundComponent } from "./components/notfound.comp";
 import { LostconectionComponent } from "./components/lostconection.comp";
+import { NavbarCompoment } from "./components/navbar";
+import { PageBase } from "./components/PageBase";
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, FormsModule, IonicModule],
   exports: [
@@ -21,6 +23,7 @@ import { LostconectionComponent } from "./components/lostconection.comp";
     LoadingLogoComponent,
     LoadingBarComponent,
     LostconectionComponent,
+    NavbarCompoment,
   ],
   declarations: [
     DateWithOutTime,
@@ -29,6 +32,7 @@ import { LostconectionComponent } from "./components/lostconection.comp";
     LoadingLogoComponent,
     LoadingBarComponent,
     LostconectionComponent,
+    NavbarCompoment,
   ],
   providers: [],
 })
