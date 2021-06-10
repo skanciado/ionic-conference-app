@@ -47,7 +47,7 @@ ion-button {
 
 .logo-text {
   font-size: 20px;
-  padding-top: 35px;
+  padding-top: 20px;
   color: var(--ion-text-color);
   @media screen and (max-width: 1024px) {
     display: none;
@@ -60,7 +60,6 @@ ion-button {
   display: flex;
   flex-direction: row;
   font-family: sans-serif;
-  padding: 10px 50px;
 }
 
 .push-left {

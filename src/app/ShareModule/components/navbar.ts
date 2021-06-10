@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, Input } from "@angular/core";
+import { AfterViewInit, Component, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { AlertController } from "@ionic/angular";
+import * as EventEmitter from "events";
 import { IUser } from "../../entities/Interfaces";
 import { EventService } from "../../providers/event.service";
 
@@ -16,7 +17,7 @@ export class NavbarCompoment {
   @Input("user")
   public user: IUser;
   public nativeNavbar: boolean;
-
+  @Output() onDisconect = new EventEmitter();
   constructor(
     public alertCtrl: AlertController,
     public eventService: EventService,
@@ -32,5 +33,9 @@ export class NavbarCompoment {
   public darkModeOff() {
     this.darkMode = false;
     this.eventService.sendDarkMode(false);
+  }
+  public closeSession() {
+    this.user = null;
+    this.onDisconect.emit(null);
   }
 }

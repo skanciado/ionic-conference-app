@@ -109,6 +109,10 @@ export class AppComponent extends PageBase implements OnInit {
       this.splashScreen.hide();
     });
   }
+  async onDisconect() {
+    this.user = null;
+    this.storeData.setUser(null);
+  }
   /**
    * Inicializador de Observers
    */

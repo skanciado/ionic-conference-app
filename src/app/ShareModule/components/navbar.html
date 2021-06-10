@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="logo animate__animated animate__backInLeft">
-    <div><img src="assets/img/appicon.png" alt="Nidus" height="90px" /></div>
+    <div><img src="assets/img/appicon.png" alt="Nidus" height="60px" /></div>
     <div class="logo-text">Nidus</div>
   </div>
   <div class="push-left">
@@ -36,9 +36,7 @@
           <ion-row class="ion-justify-content-center">
             <ion-col size="3">
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="../../../assets/img/avatar.png" />
               </ion-avatar>
             </ion-col>
           </ion-row>
@@ -57,7 +55,9 @@
           </ion-row>
           <ion-row class="ion-justify-content-center grid-boton-line">
             <ion-col size="12" class="ion-text-center">
-              <ion-button size="small" color="light">Cerrar Session</ion-button>
+              <ion-button size="small" color="light" (click)="closeSession()"
+                >Cerrar Session</ion-button
+              >
             </ion-col>
           </ion-row>
         </ion-grid>
