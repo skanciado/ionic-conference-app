@@ -14,18 +14,6 @@ const routes: Routes = [
         (module) => module.PublicModule
       ),
   },
-  {
-    path: "schedule",
-    loadChildren: () =>
-      import("./pages/schedule/schedule.module").then((m) => m.ScheduleModule),
-  },
-  {
-    path: "speaker",
-    loadChildren: () =>
-      import("./pages/speaker-list/speaker-list.module").then(
-        (m) => m.SpeakerListModule
-      ),
-  },
 ];
 
 @NgModule({

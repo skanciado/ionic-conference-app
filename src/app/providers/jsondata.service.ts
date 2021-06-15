@@ -6,12 +6,12 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class ConferenceData {
+export class JsonDataService {
   data: any;
-
+  menus: any;
   constructor(public http: HttpClient) {}
 
-  load(): any {
+  getDataJson(): any {
     if (this.data) {
       return of(this.data);
     } else {
@@ -20,8 +20,16 @@ export class ConferenceData {
         .pipe(map(this.processData, this));
     }
   }
+  async getMenuJson(): Promise<any> {
+    if (this.menus) {
+      return of(this.menus);
+    } else {
+      let a = this.http.get("assets/data/menus.json").toPromise();
+      return a;
+    }
+  }
 
-  processData(data: any) {
+  private processData(data: any) {
     // just some good 'ol JS fun with objects and arrays
     // build up the data by linking speakers to sessions
     this.data = data;
@@ -58,7 +66,7 @@ export class ConferenceData {
     excludeTracks: any[] = [],
     segment = "all"
   ) {
-    return this.load().pipe(
+    return this.getDataJson().pipe(
       map((data: any) => {
         const day = data.schedule[dayIndex];
         day.shownSessions = 0;
@@ -129,29 +137,13 @@ export class ConferenceData {
   }
 
   getSpeakers() {
-    return this.load().pipe(
+    return this.getDataJson().pipe(
       map((data: any) => {
         return data.speakers.sort((a: any, b: any) => {
           const aName = a.name.split(" ").pop();
           const bName = b.name.split(" ").pop();
           return aName.localeCompare(bName);
         });
-      })
-    );
-  }
-
-  getTracks() {
-    return this.load().pipe(
-      map((data: any) => {
-        return data.tracks.sort();
-      })
-    );
-  }
-
-  getMap() {
-    return this.load().pipe(
-      map((data: any) => {
-        return data.map;
       })
     );
   }

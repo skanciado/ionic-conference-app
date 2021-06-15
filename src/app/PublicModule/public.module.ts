@@ -12,6 +12,9 @@ import { SignupPage } from "./signup/signup";
 import { SupportPage } from "./support/support";
 import { HttpClientModule } from "@angular/common/http";
 import { ShareModule } from "../ShareModule/share.module";
+import { SchedulePage } from "./schedule/schedule";
+import { ProjectPage } from "./project/project";
+import { DirectoryPage } from "./directory/directory";
 
 const routes: Routes = [
   {
@@ -22,6 +25,18 @@ const routes: Routes = [
   {
     path: "",
     component: HomePage,
+  },
+  {
+    path: "schedure",
+    component: SchedulePage,
+  },
+  {
+    path: "project",
+    component: ProjectPage,
+  },
+  {
+    path: "directory",
+    component: DirectoryPage,
   },
   {
     path: "login",
@@ -52,7 +67,16 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   exports: [RouterModule],
-  declarations: [AccountPage, HomePage, SupportPage, LoginPage, SignupPage],
+  declarations: [
+    AccountPage,
+    HomePage,
+    SupportPage,
+    LoginPage,
+    SignupPage,
+    SchedulePage,
+    ProjectPage,
+    DirectoryPage,
+  ],
   providers: [],
 })
 export class PublicModule {}

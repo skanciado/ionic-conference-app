@@ -2,7 +2,7 @@
   <ion-menu side="start" contentId="main-content">
     <ion-content>
       <ion-list lines="none">
-        <ion-list-header> Conference </ion-list-header>
+        <ion-list-header> Principales </ion-list-header>
         <ion-menu-toggle
           autoHide="false"
           *ngFor="let p of appPages; let i = index"
@@ -13,7 +13,7 @@
             routerDirection="root"
             detail="false"
           >
-            <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
             <ion-label>
               {{ p.title }}
             </ion-label>
@@ -22,7 +22,7 @@
       </ion-list>
 
       <ion-list lines="none">
-        <ion-list-header> Account </ion-list-header>
+        <ion-list-header> Opciones Extra??? </ion-list-header>
 
         <ion-menu-toggle autoHide="false">
           <ion-item
@@ -32,32 +32,20 @@
             detail="false"
           >
             <ion-icon slot="start" name="person"></ion-icon>
-            <ion-label> Account </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-menu-toggle autoHide="false">
-          <ion-item
-            routerLink="/public/support"
-            routerLinkActive="active"
-            routerDirection="root"
-            detail="false"
-          >
-            <ion-icon slot="start" name="help"></ion-icon>
-            <ion-label> Support </ion-label>
+            <ion-label> Opcion 1 </ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-menu-toggle autoHide="false">
           <ion-item button detail="false">
-            <ion-icon slot="start" name="log-out"></ion-icon>
-            <ion-label> Logout </ion-label>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label> Opcion 2 </ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
 
       <ion-list lines="none">
-        <ion-list-header> Account </ion-list-header>
+        <ion-list-header> Administración </ion-list-header>
 
         <ion-menu-toggle autoHide="false">
           <ion-item
@@ -67,7 +55,7 @@
             detail="false"
           >
             <ion-icon slot="start" name="log-in"></ion-icon>
-            <ion-label> Login </ion-label>
+            <ion-label> Gestión usuarios </ion-label>
           </ion-item>
         </ion-menu-toggle>
 
@@ -79,62 +67,37 @@
             detail="false"
           >
             <ion-icon slot="start" name="help"></ion-icon>
-            <ion-label> Support </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-menu-toggle autoHide="false">
-          <ion-item
-            routerLink="/public/signup"
-            routerLinkActive="active"
-            routerDirection="root"
-            detail="false"
-          >
-            <ion-icon slot="start" name="person-add"></ion-icon>
-            <ion-label> Signup </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-item>
-          <ion-icon slot="start" name="moon-outline"></ion-icon>
-          <ion-label> Dark Mode </ion-label>
-          <ion-toggle [(ngModel)]="dark"></ion-toggle>
-        </ion-item>
-      </ion-list>
-
-      <ion-list lines="none">
-        <ion-list-header> Tutorial </ion-list-header>
-        <ion-menu-toggle autoHide="false">
-          <ion-item button detail="false">
-            <ion-icon slot="start" name="hammer"></ion-icon>
-            <ion-label>Show Tutorial</ion-label>
+            <ion-label> Ultimas consultas </ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
-  <navbar-comp sticky [user]="user" [darkMode]="dark"></navbar-comp>
+  <navbar-comp [user]="user" [darkMode]="dark" [menu]="appPages"></navbar-comp>
   <ion-router-outlet id="main-content"></ion-router-outlet>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule">
-        <ion-icon name="calendar"></ion-icon>
-        <ion-label>Schedule</ion-label>
+        <ion-icon name="library-outline"></ion-icon>
+        <ion-label>Biblioteca</ion-label>
       </ion-tab-button>
-
+      <ion-tab-button tab="directorio">
+        <ion-icon name="folder-open-outline"></ion-icon
+        ><ion-label>Directorio</ion-label>
+      </ion-tab-button>
       <ion-tab-button tab="speaker">
-        <ion-icon name="people"></ion-icon>
-        <ion-label>Speakers</ion-label>
+        <ion-icon name="folder-open-outline"></ion-icon>
+        <ion-label>Agenda</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="map">
-        <ion-icon name="location"></ion-icon>
-        <ion-label>Map</ion-label>
+        <ion-icon name="trail-sign-outline"></ion-icon>
+        <ion-label>Proyecto</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="about">
         <ion-icon name="information-circle"></ion-icon>
-        <ion-label>About</ion-label>
+        <ion-label>Contacto</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

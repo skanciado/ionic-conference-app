@@ -1,89 +1,98 @@
 <nav class="navbar">
   <div class="logo animate__animated animate__backInLeft">
-    <div><img src="assets/img/appicon.png" alt="Nidus" height="60px" /></div>
+    <div><img src="assets/img/appicon.png" alt="Nidus" /></div>
     <div class="logo-text">Nidus</div>
   </div>
-  <div class="push-left">
-    <!--  Menu compatible with wp_nav_menu  -->
-    <ul id="primary-menu" class="menu nav-menu-web">
-      <li class="menu-item current-menu-item">
-        <a class="nav__link" href="#">Biblioteca</a>
-      </li>
-      <li class="menu-item dropdown">
-        <a class="nav__link" href="#">Directorio</a>
-        <ul class="sub-nav">
-          <li><a class="sub-nav__link" href="#">link 1</a></li>
-          <li><a class="sub-nav__link" href="#">link 2</a></li>
-        </ul>
-      </li>
-      <li class="menu-item"><a class="nav__link" href="#">Agenda</a></li>
-      <li class="menu-item"><a class="nav__link" href="#">Proyecto</a></li>
-      <li class="menu-item"><a class="nav__link" href="#">Contacto</a></li>
-    </ul>
+  <div class="menu">
+    <ion-segment (ionChange)="segmentChanged(selected)" [(ngModel)]="selected">
+      <ion-segment-button *ngFor="let menu of tabs" [value]="menu.url">
+        <ion-icon [name]="menu.icon"> </ion-icon>
+        <ion-label>{{menu.title}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </div>
-  <div class="push-left flex-container animate__animated animate__backInRight">
-    <div class="menu-left-button" *ngIf="user==null">
-      <ion-button size="small" color="light">Acceder a Nidus</ion-button>
-    </div>
-    <div class="menu-left-item dropdown" *ngIf="user">
-      <ion-icon
-        name="person-circle-outline"
-        class="menu-icon"
-        color="dark"
-      ></ion-icon>
-      <div class="dropdown-content">
-        <ion-grid>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="3">
-              <ion-avatar>
-                <img src="../../../assets/img/avatar.png" />
-              </ion-avatar>
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12" class="ion-text-center">
-              <h4 class="userName">{{user.Name}} {{user.LastName}}</h4>
-              <p class="emailUser">{{user.Email}}</p>
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-justify-content-center grid-boton-line">
-            <ion-col size="12" class="ion-text-center">
-              <ion-button size="small" color="light"
-                >Gestión de tu la cuenta</ion-button
-              >
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-justify-content-center grid-boton-line">
-            <ion-col size="12" class="ion-text-center">
-              <ion-button size="small" color="light" (click)="closeSession()"
-                >Cerrar Session</ion-button
-              >
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-    </div>
-    <div class="menu-left-item" *ngIf="(darkMode==false); else other_content">
-      <ion-icon
-        name="sunny-outline"
-        class="menu-icon"
-        color="dark"
-        (click)="darkModeOn()"
-      ></ion-icon>
-    </div>
-    <ng-template #other_content>
-      <div class="menu-left-item">
+  <div class="options">
+    <div
+      class="push-left flex-container animate__animated animate__backInRight"
+    >
+      <div class="menu-left-item dropdown">
         <ion-icon
-          name="moon"
-          color="dark"
+          name="person-circle-outline"
           class="menu-icon"
-          (click)="darkModeOff()"
+          color="dark"
+        ></ion-icon>
+        <div class="dropdown-content">
+          <ion-grid *ngIf="user==null">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12" class="ion-text-center">
+                <h4 class="userName">No estas autentificado</h4>
+                <p class="emailUser">¿Deseas conectar-te?</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12" class="ion-text-center">
+                <ion-button size="small" color="light"
+                  >Acceder a Nidus</ion-button
+                >
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center"> </ion-row>
+          </ion-grid>
+
+          <ion-grid *ngIf="user">
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="3">
+                <ion-avatar>
+                  <img src="../../../assets/img/avatar.png" />
+                </ion-avatar>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12" class="ion-text-center">
+                <h4 class="userName">{{user.Name}} {{user.LastName}}</h4>
+                <p class="emailUser">{{user.Email}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center grid-boton-line">
+              <ion-col size="12" class="ion-text-center">
+                <ion-button size="small" color="light"
+                  >Gestión de tu la cuenta</ion-button
+                >
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center grid-boton-line">
+              <ion-col size="12" class="ion-text-center">
+                <ion-button size="small" color="light" (click)="closeSession()"
+                  >Cerrar Session</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+      <div class="menu-left-item" *ngIf="(darkMode==false); else other_content">
+        <ion-icon
+          name="sunny-outline"
+          class="menu-icon"
+          color="dark"
+          (click)="darkModeOn()"
         ></ion-icon>
       </div>
-    </ng-template>
-    <div>
-      <ion-menu-button class="menu-icon menu-button" color="dark">
-      </ion-menu-button>
+      <ng-template #other_content>
+        <div class="menu-left-item">
+          <ion-icon
+            name="moon"
+            color="dark"
+            class="menu-icon"
+            (click)="darkModeOff()"
+          ></ion-icon>
+        </div>
+      </ng-template>
+      <div>
+        <ion-menu-button class="menu-icon menu-button" color="dark">
+        </ion-menu-button>
+      </div>
     </div>
   </div>
 </nav>
+<nav class="navbar"></nav>

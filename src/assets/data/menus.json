@@ -1,0 +1,29 @@
+{
+  "menu": [
+    {
+      "title": "Biblioteca",
+      "url": "/public",
+      "icon": "library-outline"
+    },
+    {
+      "title": "Directorio",
+      "url": "/public/directory",
+      "icon": "folder-open-outline"
+    },
+    {
+      "title": "Agenda",
+      "url": "/public/schedure",
+      "icon": "trail-sign-outline"
+    },
+    {
+      "title": "Proyecto",
+      "url": "/public/project",
+      "icon": "trail-sign-outline"
+    },
+    {
+      "title": "Contacto",
+      "url": "/public/support",
+      "icon": "information-circle"
+    }
+  ]
+}

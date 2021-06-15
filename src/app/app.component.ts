@@ -20,6 +20,7 @@ import { StoreData } from "./providers/storage.data";
 import { RestService } from "./providers/RestBase.service";
 import { delay, retryWhen, tap } from "rxjs/operators";
 import { IUser } from "./entities/Interfaces";
+import { JsonDataService } from "./providers/jsondata.service";
 
 @Component({
   selector: "app-root",
@@ -28,28 +29,7 @@ import { IUser } from "./entities/Interfaces";
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent extends PageBase implements OnInit {
-  appPages = [
-    {
-      title: "Schedule",
-      url: "/schedule",
-      icon: "calendar",
-    },
-    {
-      title: "Speakers",
-      url: "/speaker",
-      icon: "people",
-    },
-    {
-      title: "Map",
-      url: "/map",
-      icon: "map",
-    },
-    {
-      title: "About",
-      url: "/about",
-      icon: "information-circle",
-    },
-  ];
+  appPages = [];
   dark: Boolean = false;
   conection: boolean = true;
   user: IUser = {
@@ -65,6 +45,7 @@ export class AppComponent extends PageBase implements OnInit {
     protected menu: MenuController,
     protected platform: Platform,
     protected router: Router,
+    protected jsonData: JsonDataService,
     protected alertCtlr: AlertController,
     protected splashScreen: SplashScreen,
     protected eventService: EventService,
@@ -80,6 +61,8 @@ export class AppComponent extends PageBase implements OnInit {
   }
 
   async ngOnInit() {
+    this.appPages = (await this.jsonData.getMenuJson()).menu;
+
     this.swUpdate.available.subscribe(async (res) => {
       const toast = await this.toastCtrl.create({
         message: "Update available!",
